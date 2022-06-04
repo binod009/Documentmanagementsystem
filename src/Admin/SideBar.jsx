@@ -73,7 +73,7 @@ export default function SideBar() {
      </Link>
      <Link className='Link' to="/logout">
        <SidebarListItem listname="Logout">
-         <Logout className='sidebarIcon'/>
+         <Logout  className='sidebarIcon'/>
        </SidebarListItem>
      </Link>
    </SidebarMenu>

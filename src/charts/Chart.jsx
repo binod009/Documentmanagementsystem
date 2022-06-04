@@ -26,7 +26,8 @@ export default function Chart() {
       <div className='toptitle'>
         <h1 className='title'>Storage Occupied</h1>
       </div>
-    <div style={{position:'relative',width:'300px',height:'300px'}}><Doughnut data={data} options={{ responsive: true,
+    <div style={{position:'relative',width:'300px',height:'300px'}}>
+      <Doughnut data={data} options={{ responsive: true,
           maintainAspectRatio: false,}}/></div>
     </div>
   )

@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
 import './upload.css';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import {db} from '../../firebase';
 import {collection} from '../../firebase/firestore';
 import { addDoc} from 'firebase/firestore';
+import { AuthContext } from '../../context/AuthContext';
 import { CircularProgress } from '@mui/material';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import SideBar from '../../Admin/SideBar';
 import Topbar from '../../Admin/Topbar';
 export default function Upload() {
   const storage = getStorage();
+  const {currentUser} = useContext(AuthContext);
   const [file,setFile] = useState("");
   const [documentdetails,setDocument] = useState({
     title:"",
@@ -63,8 +65,12 @@ setDocument({...documentdetails,[id]:value})
 
 const handleSubmit =(e)=>{
     e.preventDefault();
-    console.log(documentdetails);
-
+     const newcollectionRef = collection(db,'category',currentUser.Uid,documentdetails.categoryName)
+     await addDoc(newcollectionRef,{
+     title:documentdetails.title,
+     uploaedBy:currentUser.name,
+     category:documentdetails.categoryName,
+     });
     setDocument({title:"",categoryName:""});
 }
   return (

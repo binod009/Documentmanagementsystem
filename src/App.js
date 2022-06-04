@@ -65,6 +65,9 @@ return(
 <Route path="createuser">
   <Route index element={<RequireAuth><CreateUser/></RequireAuth>}/> 
 </Route>
+<Route path="logout">
+  <Route index element={<Login/>}/> 
+</Route>
 </Route>
    </Routes>
 </Router>

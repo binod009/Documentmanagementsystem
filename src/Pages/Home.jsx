@@ -51,7 +51,7 @@ export default function Home() {
       <Featuredinfo data={data}/>
       </div>
       <div className="category-container">
-        <CategoryList/>
+      <CategoryList/>
       <Chart/>
       </div>
     </div>

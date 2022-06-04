@@ -1,4 +1,4 @@
-import React from "react";
+ import React from "react";
 export default function SidebarMenu(props) {
   return (
     <div className="sidebarMenu">

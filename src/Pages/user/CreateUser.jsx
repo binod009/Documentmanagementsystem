@@ -93,11 +93,11 @@ file && uploadfile();
                  userdata.email,
                  userdata.password
              )
-           const docs = await setDoc(doc(db,"users",res.user.uid) ,{
+             await setDoc(doc(db,"users",res.user.uid) ,{
                 ...userdata,
 
               });
-              console.log(docs);
+               
             setUser({email:"",password:"",fullname:"",address:"",post:"",phone:""});
             }
          catch(error){

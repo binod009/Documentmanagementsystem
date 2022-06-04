@@ -31,8 +31,6 @@ const handleDelete=(id)=>{
 return (
     
     <>
-    
-            
             <h1 className='documentcategoryTitle'>{props.docdata.title}</h1>
             <div style={{ height: 400, width: '98%' }}>
               <DataGrid
