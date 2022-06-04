@@ -1,0 +1,42 @@
+.featured{
+    display: flex;
+    width: 100%;
+    flex:1;
+   justify-content: space-between;
+   height: 10rem;
+}
+.featuredItem{
+    width: 200px;
+    margin:10px 25px;
+    padding:2.5rem;
+    border-radius: 10px;
+    cursor:pointer;
+    -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+}
+.featuredTitle{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    align-items: center;
+    font-size: 20px;
+}
+
+.documentnumbercontainer{
+margin:10px 0px;
+display: flex;
+align-items: center;
+}
+
+.featuredNumber{
+font-size: 20px;
+font-weight: bold;
+}
+
+.featuredIcon{
+margin-left: 15px;
+font-size: 28px;
+color:gray
+}
+
+

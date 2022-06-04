@@ -1,0 +1,66 @@
+.category-container{
+    display: flex;
+    margin:0;
+    padding: 0;
+    width: 100%; 
+}
+.createcategory{
+    flex:5;
+    margin-left: 12.5rem;
+}
+.sidebar-container{
+    flex:1;
+    position: fixed;
+}
+.createcategory-title{
+    font-size: 16px;
+    font-weight: 800;
+}
+.create-categoryform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.categoryform{
+    width: 20rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin:0.5rem;
+}
+.categoryform>label{
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(151, 150, 150);
+}
+.categoryform>input{
+    margin-top:0.5rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    padding: 10px;
+    border:1px solid gray;
+}
+.categoryform>input:focus{
+    outline-color: rgb(57, 57, 235);
+}
+.typeselect{
+    margin-top:0.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+}
+.typeselect:focus{
+    outline-color:rgb(57, 57, 235);
+}
+.category-btn{
+    background-color: darkblue;
+    color:white;
+    width: 10rem;
+    border:none;
+    padding:0.4rem 0.3rem;
+    border-radius:7px;
+    cursor:pointer;
+    margin-top:1.5rem;
+
+}
+

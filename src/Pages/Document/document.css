@@ -1,0 +1,69 @@
+.document{
+    flex:5;
+    background-color: aliceblue;
+    margin-left: 12.8rem;
+}
+.document-container{
+    display: flex;
+}
+.sidebar-container{
+    position: fixed;
+    flex:1;
+    width: 12.5rem;
+}
+.filterContainer{
+top:3.1rem;
+left:86%;
+position:fixed;
+z-index:1;
+box-sizing: border-box;
+padding:5px;
+display: flex;
+border-radius: 5px;
+align-items: center;
+background-color:rgb(112, 112, 112);
+}
+
+.inputfilter{
+    border: none;
+    padding: 5px;
+    display: flex;
+    box-sizing: border-box;
+    margin: 5px;
+    margin-left: 10px;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.inputfilter:focus{
+    outline: none;
+}
+.filterInputs{
+    width:5rem;
+    height: 2rem;
+    background-color: aliceblue;
+   
+}
+.label-title{
+    font-size: 1.1em;
+    font-weight: 600;
+    color: cadetblue;
+}
+.documentcategoryTitle{
+    font-size:1em;
+    padding:0.2rem,0.2rem;
+    font-weight: 900;
+    color: rgb(43, 6, 164);
+    border-radius:5px;
+  
+}
+.docsdelete{
+    font-size: 25px !important;
+    color:red;
+    cursor: pointer;
+}
+
+.documenttable{
+margin-top:3rem;
+height: 26rem;
+background-color: orange;
+}

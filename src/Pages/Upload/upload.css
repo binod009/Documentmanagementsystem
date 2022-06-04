@@ -1,0 +1,76 @@
+
+.upload-container{
+    display: flex;
+}
+.upload{
+    flex:5;
+    margin-left: 12.5rem;
+}
+.uplaodtitle{
+    font-size: 2em;
+    font-weight: 800;
+    color: #444;
+}
+.uploadForm{
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;
+}
+.uploaddoc{
+    width: 20rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin:0.5rem;
+}
+.uploaddoc>label{
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 2rem;
+    color:#444;
+}
+.uploaddoc>input{
+    width: 18rem;
+    font-size: 1.5em;
+    border:1px solid gray;
+    text-align: center;
+    border-radius: 5px;
+    padding:0.8rem;
+    text-transform: capitalize;
+    margin-top:0.2rem;
+}
+.input-file{
+    padding: 0.8rem;
+    display: block;
+    border:1px solid gray;
+
+}
+.categoryselect{
+    margin-top:0.2rem;
+    height: 2.5rem;
+    text-align: center;
+    border-radius: 5px;
+}
+input:hover{
+border-color:blue;
+}
+select:hover{
+    border-color:blue;
+}
+input:focus{
+    outline: blue;
+}
+select:focus{
+    outline: blue;
+}
+.upload-btn{
+    margin-top: 1rem;
+    padding:0.6rem 0.3rem;
+    border: none;
+    width: 9rem;
+    background-color: #00008b;
+    color: white;
+    border-radius: 8px;
+}
+

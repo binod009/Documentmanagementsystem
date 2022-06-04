@@ -1,0 +1,58 @@
+.createuser{
+    display: flex;
+}
+.sidebar-container{
+    position: fixed;
+    flex:1;
+}
+
+.createuser-formcontainer{
+    margin-left:12.5rem;
+    flex:5;
+}
+.titlebar,.bottom{
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+    margin: 20px;
+    display: flex;
+}
+
+h1{
+    color: lightgray;
+    font-size: 1.4em;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit:cover;
+}
+.left{
+    flex:1;
+    text-align: center;
+}
+.right{
+    flex:2;
+}
+.formInput{
+    width: 16rem;
+    margin: 5px;
+    text-align: center;
+}
+label{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+/* form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    align-items: center;
+    gap:2rem;
+} */
+.icon{
+    cursor:pointer;
+}
+

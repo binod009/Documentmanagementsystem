@@ -1,0 +1,26 @@
+.request-container{
+    display: flex;
+}
+.userrequest{
+flex: 5;
+height: auto;
+margin-left: 12.5rem;
+
+}
+
+.userrequest-title{
+    font-size: 2em;
+    font-weight: 800;
+    color: #444;
+}
+.requestListIconApprove{
+    font-size:25px !important;
+    margin-right:3px;
+
+}
+.requestListIconDecline{
+    font-size:25px !important;
+    margin-right: 3px;
+
+    
+}
