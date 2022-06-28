@@ -1,44 +1,68 @@
 import React from 'react'
 import './login.css';
 import logo from '../../src/logo11.png';
-import { useState,useContext } from 'react';
+import { useState,useContext,useEffect } from 'react';
 import {TextField,Button} from '@mui/material';
 import{signInWithEmailAndPassword} from "firebase/auth";
 import {Link, useNavigate} from 'react-router-dom';
-import {auth} from '../firebase';
+import {auth,db} from '../firebase';
+import Alert from '@mui/material/Alert';
+import {doc,getDoc} from "firebase/firestore";
 import {AuthContext} from '../context/AuthContext';
-
 export default function Login() {
-
-  const [error,setError] = useState(false);
   const [UserLogin,setUserLogin] = useState({
     email: "" ,
     password: ""
   });
+  const[isSubmit,setIsSubmit] =useState(false);
+  const[formErrors,setFormErrors] = useState({});
+
+  //checking inputfrom values for valiation
+  const validate =(values)=>{
+    const errors={};
+    const regex =/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if(!values.email){
+      errors.email = "Email is required";
+    }else if(!regex.test(values.email)){
+      errors.email="Enter a valid Email";
+    }
+    if(!values.password){
+      errors.password = "Password is required";
+    }
+    return errors;
+  }
 const navigate = useNavigate();
-
 const {dispatch} = useContext(AuthContext)
-
 const handleInput =(e)=>{
 const name = e.target.name;
 const value= e.target.value;
 setUserLogin({...UserLogin, [name]:value});
 }
- 
-  const handleSubmit=(e)=>{
+//form submit
+  const handleSubmit = (e)=>{
     e.preventDefault();
-    signInWithEmailAndPassword(auth, UserLogin.email,UserLogin.password)
+    setIsSubmit(true);
+    setFormErrors(validate(UserLogin));
+  }
+  //As soon as FormErros changes this function fires
+useEffect(()=>{
+if(Object.keys(formErrors).length=== 0 && isSubmit){
+   signInWithEmailAndPassword(auth, UserLogin.email,UserLogin.password)
   .then((userCredential) => {
     // Signed in 
-    const user = userCredential.user;
+    const user = userCredential.user
+    const docRef =doc(db,'admin',user.uid)
+    getDoc((docRef)).then((doc)=>{
+     localStorage.setItem('currentuser',JSON.stringify(doc.data()));
+    });
     dispatch({type:"LOGIN", payload:user})
     navigate("/");
   })
   .catch((error) => {
-    setError(true);
-    // ..
+    <Alert severity="error">error</Alert>
   });
-  }
+}
+  },[formErrors])
   return (
 <div className='login-container'>
   <form className='formcontainer' onSubmit={handleSubmit} >
@@ -48,14 +72,15 @@ setUserLogin({...UserLogin, [name]:value});
       <div className='inputfield'>
       <TextField fullWidth type="text" name='email' id="email"value={UserLogin.email} label="Username" variant="outlined" onChange={handleInput} autoComplete="false"/>
       </div>
+      <span style={{color:'red',fontSize:'0.7em'}}>{formErrors.email}</span>
       <div className='inputfield'>
-      <TextField fullWidth type="password" name='password' id="password" value={UserLogin.password} label="Password" variant="outlined" onChange={handleInput} autoComplete="false" />
+      <TextField fullWidth type="password" name='password' id="password" value={UserLogin.password} label="Password" variant="outlined" onChange={handleInput} />
       </div>
+      <span style={{color:'red',fontSize:'0.8em'}}>{formErrors.password}</span>
       <div className='rememberme'>
         <input type="checkbox" id="rememberpassword" />
           <label htmlFor="rememberpassword">Remember Me</label>
       </div>  
-     {error && <span style={{fontSize:"12px",color:"red",marginTop:"10px"}}>Wrong Email & Password !</span>}
       <div className='btn-container'>
       <Button type="submit" fullWidth variant="contained">Login</Button>
       </div> 

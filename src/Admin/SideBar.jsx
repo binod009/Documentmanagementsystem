@@ -1,11 +1,19 @@
 import React from 'react'
 import './sidebar.css';
 import TopBar from '../Admin/Topbar';
+import {CircularProgress,Backdrop} from '@mui/material';
+import { useContext } from 'react';
 import SidebarMenu from './SidebarMenu';
 import {UploadFile,LineStyle,Add,PersonOutline,InsertDriveFile,Category,AdminPanelSettings,Logout} from '@mui/icons-material';
 import SidebarListItem from './SidebarListItem';
 import {Link} from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 export default function SideBar() {
+  const {dispatch} = useContext(AuthContext)
+  const logout =()=>{
+   dispatch({type:"LOGOUT",payload:{currentUser:"",backdrop:true}})
+   localStorage.clear();
+  }
   return (
    <>
 <div className='sidebar'>
@@ -71,13 +79,13 @@ export default function SideBar() {
          <AdminPanelSettings className='sidebarIcon'/>
        </SidebarListItem>
      </Link>
-     <Link className='Link' to="/logout">
-       <SidebarListItem listname="Logout">
-         <Logout  className='sidebarIcon'/>
-       </SidebarListItem>
+     <Link className='Link' to="">
+       <div className='logout-box'>
+         <Logout className="sidebarIcon"/>
+         <span onClick={logout} className="logout">Logout</span>
+       </div>
      </Link>
    </SidebarMenu>
-   
    </div>
    </div>
    </>

@@ -3,6 +3,7 @@ switch(action.type){
      case "LOGIN":{
 return{
     currentUser:action.payload,
+    
 };
     };
 
@@ -11,6 +12,7 @@ case "LOGOUT":{
        currentUser:null,
       }
     };
+
     default:
        return state;
    }

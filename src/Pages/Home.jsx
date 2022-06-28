@@ -12,14 +12,16 @@ import UserRequest from '../Pages/user/UserRequest';
 import UserList from '../Pages/userlist/UserList';
 import { FileCopy,Person,CategoryOutlined } from '@material-ui/icons';
 import Upload from '../Pages/Upload/Upload';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import CreateCategory from '../Pages/CreateCategory/CreateCategory';
 import {
   BrowserRouter as Router,
   Routes,
   Route,} from "react-router-dom";
 
-
 export default function Home() {
+  const {backdrop} = useContext(AuthContext);
   const data =[
     {
     title:"Documents",
@@ -40,7 +42,6 @@ export default function Home() {
         
 ]
   return (
-  
   <div className="Home">
     <div className="sidebar-container">
       <SideBar/>
@@ -51,7 +52,6 @@ export default function Home() {
       <Featuredinfo data={data}/>
       </div>
       <div className="category-container">
-      <CategoryList/>
       <Chart/>
       </div>
     </div>
