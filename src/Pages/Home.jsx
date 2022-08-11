@@ -12,20 +12,41 @@ import UserRequest from '../Pages/user/UserRequest';
 import UserList from '../Pages/userlist/UserList';
 import { FileCopy,Person,CategoryOutlined } from '@material-ui/icons';
 import Upload from '../Pages/Upload/Upload';
+import { useEffect,useState } from 'react';
+import { collection, getDocs } from "firebase/firestore";
+import{db} from '../firebase';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import CreateCategory from '../Pages/CreateCategory/CreateCategory';
 import {
   BrowserRouter as Router,
   Routes,
   Route,} from "react-router-dom";
 
 export default function Home() {
-  const {backdrop} = useContext(AuthContext);
-  const data =[
+const [count,setCount]= useState(0);
+
+useEffect(()=>{
+const retrive=async()=>{
+  const colRef = collection(db, "category");
+  const docsSnap = await getDocs(colRef);
+  const list=[];
+  docsSnap.forEach(doc => {
+   list.push(doc.data());
+  })
+  setCount(list.length);
+}
+retrive();
+},[])
+
+  // doc.data() is never undefined for query doc snapshots
+
+   
+// doc.data() is never undefined for query doc snapshot
+
+const data =[
     {
     title:"Documents",
-    total:5,
+    total:count,
     icon:<FileCopy/>
 },
     {
@@ -38,8 +59,7 @@ export default function Home() {
   title:"Users",
   total:20,
   icon:<Person/>
-}
-        
+}       
 ]
   return (
   <div className="Home">

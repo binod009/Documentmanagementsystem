@@ -8,8 +8,8 @@ import TopBar from '../../Admin/Topbar';
 import {getStorage,ref,uploadBytesResumable,getDownloadURL} from 'firebase/storage';
 import {PermIdentity,MyLocationOutlined,Male,AlternateEmail,WorkOutline, PhoneAndroidOutlined, PublishOutlined} from '@mui/icons-material';
 import { useEffect,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Progress from '../../Loader/Progress';
-import { setPersistence } from 'firebase/auth';
 export default function User() {
 const {userid} = useParams();
 const [file,setFile] = useState("");
@@ -23,31 +23,39 @@ const [edituser,setEditUser]=useState({
     phone:"",
     address:"",
     img:"",
-    age:""
+    gender:"",
 });
+const navigate = useNavigate();
+// const update = async(newurl)=>{
+// if(newurl){
+//   console.log(userid);
+//   const userRef = doc(db,"users",userid);
+//   await updateDoc(userRef,{
+//     ...edituser
+//   });
+//   setEditUser({fullname:"",phone:"",address:"",phone:"",img:"",age:""});
+// }else{
+  
+//   }
+// }
 
-const update = async(newurl)=>{
+const handleSubmit = async(e,newurl)=>{
+e.preventDefault();
 if(newurl){
   const userRef = doc(db,"users",userid);
   await updateDoc(userRef,{
-    ...edituser
+    ...edituser,img:newurl
   });
   setEditUser({fullname:"",phone:"",address:"",phone:"",img:"",age:""});
+  navigate('/Admin/user');
 }else{
-  const userRef = doc(db,"users",userid)
+const userRef = doc(db,"users",userid)
     await updateDoc(userRef,{
-      ...edituser,img:newurl
+      ...edituser
   })
   setEditUser({fullname:"",phone:"",address:"",phone:"",img:"",age:""});
-  }
+  navigate('/Admin/user');
 }
-
-
-const handleSubmit = async(newurl)=>{
-if(newurl){
-update(newurl);
-}
-update();
 }
 useEffect(()=>{
 const upload=()=>{
@@ -95,13 +103,18 @@ setEditUser({...edituser,img:URL.createObjectURL(file)});
 }
 file && changeimage();
 },[file]);
+
+
 useEffect(()=>{
    userid && getSingleuser();
   },[userid])
+
+
 const getSingleuser=async()=>{
 const docRef = doc(db,'users',userid);
 const snapshot = await getDoc(docRef);
 if(snapshot.exists()){
+  console.log(snapshot.data())
     setEditUser({...snapshot.data()}); 
    }
 }
@@ -110,6 +123,7 @@ const id = e.target.id;
 const value = e.target.value;
 setEditUser({...edituser,[id]:value});
 }
+
   return (
     <div className='user'> 
     <div className='sidebar-container'>
@@ -133,11 +147,11 @@ setEditUser({...edituser,[id]:value});
 <div className='userShowBottom'>
     <span className='usershowTitle'>Account Details</span>
     <div className="userShowInfo">
-    <PermIdentity classname="userShowIcon"/>
+    <PermIdentity className="userShowIcon"/>
     <span className='userShowInfoTitle'>{edituser.fullname}</span>
     </div>
     <div className="userShowInfo">
-    <WorkOutline classname="userShowIcon"/>
+    <WorkOutline className="userShowIcon"/>
     <span className='userShowInfoTitle'>{edituser.post}</span>
     </div>
     <div className="userShowInfo">
@@ -146,15 +160,15 @@ setEditUser({...edituser,[id]:value});
     </div>
     <span className='usershowTitle'>{edituser.phone}</span>
     <div className="userShowInfo">
-    <MyLocationOutlined classname="userShowIcon"/>
+    <MyLocationOutlined className="userShowIcon"/>
     <span className='userShowInfoTitle'>{edituser.address}</span>
     </div>
     <div className="userShowInfo">
-    <AlternateEmail classname="userShowIcon"/>
+    <AlternateEmail className="userShowIcon"/>
     <span className='userShowInfoTitle'>{edituser.email}</span>
     </div>
     <div className="userShowInfo">
-    <PhoneAndroidOutlined classname="userShowIcon"/>
+    <PhoneAndroidOutlined className="userShowIcon"/>
     <span className='userShowInfoTitle'>{edituser.phone}</span>
     </div>
     
@@ -231,13 +245,21 @@ setEditUser({...edituser,[id]:value});
                 className='userUpdateInfo'
                 />
             </div>
+            <div className='userUpdateItem'>
+                <label>Gender</label>
+                <select id="gender"  onChange={handleInput}>
+                <option value=""></option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+               </select>
+            </div>
         
         </div>
      
         <div className='userUpdateRight'>
             <div className='userUpdateUpload'>
             <img src={edituser.img} alt="profile" className="userUpdateImg" />
-            <label htmlFor="file"><PublishOutlined classsName="userUpdateIcon"/></label>
+            <label htmlFor="file"><PublishOutlined className="userUpdateIcon"/></label>
             <input type='file' id='file'onChange={e=>setFile(e.target.files[0])}  style={{display:'none'}}/>
         </div>
         <button className='userUpdateButton'>Update</button>

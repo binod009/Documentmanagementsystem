@@ -19,9 +19,11 @@
 }
 .userlistuser{
 display: flex;
-align-items: center;
-width: 20rem;
-justify-content: space-around;
+align-items:center;
+width: 10rem;
+
+justify-content: space-between;
+overflow-x: hidden;
 }
 .userlistimage{
 width: 40px;

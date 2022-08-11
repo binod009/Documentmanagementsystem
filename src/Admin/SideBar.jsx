@@ -22,25 +22,25 @@ export default function SideBar() {
     </div> 
 <div className='sidebarwrapper'>
    <SidebarMenu title="DashBoard">
-<Link className='Link' to='/'>
+<Link className='Link' to='/Admin'>
      <SidebarListItem listname="Home">
          <LineStyle className="sidebarIcon"/>
         </SidebarListItem>
 </Link>
   </SidebarMenu>
  <SidebarMenu title="Quick Menu">
-      <Link className='Link' to='/user'>
+      <Link className='Link' to='/Admin/user'>
      <SidebarListItem listname="User">
          <PersonOutline className="sidebarIcon"/>
         </SidebarListItem>
         </Link>
-    <Link className='Link' to="/documents">
+    <Link className='Link' to="/Admin/documents">
      <SidebarListItem listname="Document">
         <InsertDriveFile className='sidebarIcon'/>
     </SidebarListItem>
     </Link>
 
-    <Link className='Link' to="/createcategory">
+    <Link className='Link' to="/Admin/createcategory">
      <SidebarListItem listname="Create Category" >
          <Category className="sidebarIcon"/>
          </SidebarListItem>
@@ -49,12 +49,12 @@ export default function SideBar() {
 
 
    <SidebarMenu title="User">
-   <Link className='Link' to='/Viewuser'>
+   <Link className='Link' to='/Admin/Viewuser'>
      <SidebarListItem listname="View">
          <PersonOutline className="sidebarIcon"/>
         </SidebarListItem>
         </Link>
-        <Link className='Link' to="/createuser">
+        <Link className='Link' to="/Admin/createuser">
      <SidebarListItem listname="CreateUser">
         <Add className='sidebarIcon'/>
     </SidebarListItem>
@@ -62,19 +62,19 @@ export default function SideBar() {
    </SidebarMenu>
 
    <SidebarMenu title="Document">
-   <Link className='Link' to="/Viewdocuments">
+   <Link className='Link' to="/Admin/Viewdocuments">
      <SidebarListItem listname="View">
          <InsertDriveFile className="sidebarIcon"/>
         </SidebarListItem>
         </Link>
-   <Link className='Link' to="/uploaddoc">
+   <Link className='Link' to="/Admin/uploaddoc">
      <SidebarListItem listname="Upload">
    <UploadFile className="sidebarIcon"/>
     </SidebarListItem>
     </Link>
    </SidebarMenu>
    <SidebarMenu title="profile">
-     <Link className='Link' to="/profile">
+     <Link className='Link' to="/Admin/profile">
        <SidebarListItem listname="Admin">
          <AdminPanelSettings className='sidebarIcon'/>
        </SidebarListItem>

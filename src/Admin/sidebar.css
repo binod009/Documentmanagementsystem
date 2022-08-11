@@ -55,3 +55,17 @@ margin-bottom:20px;
     cursor: pointer;
     font-size: 30px;
 }
+.logout-box{
+    display: flex;
+    margin:2px;
+    width: 133px;
+    flex-direction: row;
+    padding: 5px;
+    
+    border-radius: 10px;
+    align-items: center;
+}
+
+.logout-box:hover{
+    background-color: rgb(192, 216, 241)
+}

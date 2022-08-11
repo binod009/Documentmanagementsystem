@@ -13,15 +13,14 @@
 }
 .filterContainer{
 top:3.1rem;
-left:86%;
-position:fixed;
+position:sticky;
 z-index:1;
 box-sizing: border-box;
 padding:5px;
 display: flex;
 border-radius: 5px;
 align-items: center;
-background-color:rgb(112, 112, 112);
+background-color:#ffffff;
 }
 
 .inputfilter{

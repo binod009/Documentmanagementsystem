@@ -5,9 +5,9 @@ import {Doughnut} from "react-chartjs-2";
 ChartJS.register(ArcElement,Legend,Tooltip);
 const data = {
     labels: [
-      'Red',
-      'Blue',
-      'Yellow'
+      'Admission',
+      'Cv',
+      'Registration'
     ],
     datasets: [{
       label: 'My First Dataset',
@@ -26,7 +26,7 @@ export default function Chart() {
       <div className='toptitle'>
         <h1 className='title'>Storage Occupied</h1>
       </div>
-    <div style={{position:'relative',width:'300px',height:'300px'}}>
+    <div style={{position:'relative',width:'340px',height:'300px'}}>
       <Doughnut data={data} options={{ responsive: true,
           maintainAspectRatio: false,}}/></div>
     </div>

@@ -26,16 +26,19 @@ img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    object-fit:cover;
+    
 }
 .left{
     flex:1;
     text-align: center;
 }
+
 .right{
     flex:2;
+
 }
 .formInput{
+    
     width: 16rem;
     margin: 5px;
     text-align: center;

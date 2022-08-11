@@ -53,5 +53,19 @@ color: #555;
     border-radius: 50%;
     cursor: pointer;
 }
+@media only screen and (max-width: 1170px) {
+    .topbarwrapper{
+        height: 50px;
+        padding:0px 20px;
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+    }
+    .topright{
+        display: flex;
+        align-items: center;
+    
+   }
+}
 
 

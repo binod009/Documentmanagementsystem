@@ -15,6 +15,7 @@ export default function Login() {
     password: ""
   });
   const[isSubmit,setIsSubmit] =useState(false);
+  const [error,setError] = useState(null)
   const[formErrors,setFormErrors] = useState({});
 
   //checking inputfrom values for valiation
@@ -51,20 +52,25 @@ if(Object.keys(formErrors).length=== 0 && isSubmit){
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user
-    const docRef =doc(db,'admin',user.uid)
+    const docRef = doc(db,'admin',user.uid)
     getDoc((docRef)).then((doc)=>{
      localStorage.setItem('currentuser',JSON.stringify(doc.data()));
     });
     dispatch({type:"LOGIN", payload:user})
-    navigate("/");
+    navigate("/Admin");
   })
   .catch((error) => {
-    <Alert severity="error">error</Alert>
+setError(error);
+setInterval(()=>{
+setError();
+},4000)
   });
 }
   },[formErrors])
   return (
+    <>
 <div className='login-container'>
+{error && <Alert severity="error">username & password didont matched !</Alert>}
   <form className='formcontainer' onSubmit={handleSubmit} >
     <div className='logocontainer'>
       <img className="logo" src={logo} alt="logo"/>
@@ -81,6 +87,7 @@ if(Object.keys(formErrors).length=== 0 && isSubmit){
         <input type="checkbox" id="rememberpassword" />
           <label htmlFor="rememberpassword">Remember Me</label>
       </div>  
+
       <div className='btn-container'>
       <Button type="submit" fullWidth variant="contained">Login</Button>
       </div> 
@@ -88,11 +95,14 @@ if(Object.keys(formErrors).length=== 0 && isSubmit){
          <p className='forget'>Forget Password......?</p>
       </div> 
       <div className="Signup">
-        <Link to="/Signup" className="Link">
+        <Link to="/Admin/Signup" className="Link">
           <p>Need an account?<span style={{color:"#20629C",marginLeft:"3px"}}>Sign Up</span></p>
         </Link>
       </div>
   </form>
     </div>
+    </>
+  
+  
   )
 }

@@ -77,7 +77,7 @@ if(Object.keys(formErrors).length === 0 && isSubmit){
       phone:register.phone,
       address:register.address,
     });
-     navigate('/Login');
+     navigate('/Admin/Login');
   })
   .catch((error) => {
     const errorCode = error.code;

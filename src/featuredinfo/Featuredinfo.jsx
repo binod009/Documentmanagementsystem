@@ -9,9 +9,9 @@ export default function Featuredinfo(props) {
       {
       props.data.map((item,index)=>{
           return(
-            <div key={index} className='featuredItem'>
-    <span className='featuredTitle'>{item.title}
-          <Featuredinfologo img={item.icon}/>
+          <div key={index} className='featuredItem'>
+          <span className='featuredTitle'>{item.title}
+           <Featuredinfologo img={item.icon}/>
             </span>
             <div className='documentnumbercontainer'>
             <span className='featuredNumber'>{item.total}</span>

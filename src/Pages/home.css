@@ -14,8 +14,10 @@
     flex:1;
     position: fixed;
 }
+
 .widgets{
     display: flex;
+
     flex-wrap: nowrap;
 }
 .category-container{

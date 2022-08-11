@@ -13,7 +13,7 @@ export default class UserList extends React.Component {
   state={userdata:[],loading:true};
  columns = [
         { field: 'id', headerName: 'ID', width: 80 },
-        { field: 'fullname', headerName: 'User', width: 240, renderCell: (params)=>{
+        { field: 'fullname', headerName: 'User', width: 190, renderCell: (params)=>{
             return(
                 <div className='userlistuser'>
                 <img className='userlistimage' src={params.row.hasOwnProperty('img')? params.row.img :""} alt="profile"/>
@@ -25,26 +25,26 @@ export default class UserList extends React.Component {
         {
           field: 'post',
           headerName: 'Post',
-          width: 180,
+          width: 170,
         },
         {
           field: 'address',
           headerName: 'Address',
-          width: 180,
+          width: 160,
         },
         {
           field: 'phone',
           headerName: 'phone',
-          width: 180,
+          width: 160,
         },
         {
             field:'Action',
             headerName:'Action',
-            widht:220,
+            widht:200,
             renderCell:(params)=>{
                 return(
                     <>
-                    <Link to={"/user/"+ params.row.id}>
+                    <Link to={"/Admin/user/"+ params.row.id}>
                     <button className='userlistedit'>Edit</button>
                     </Link>
                     <DeleteOutline className="userlistdelete" onClick={()=>this.handelDelete(params.row.id)} />
@@ -78,7 +78,7 @@ export default class UserList extends React.Component {
 // console.log(err);
 const unsub = onSnapshot(collection(db, "users"), (snapShot) => {
   let list= [];
-
+  console.log(snapShot.docs);
   snapShot.docs.forEach((doc)=>{
     list.push({...doc.data(),id:doc.id});
   });

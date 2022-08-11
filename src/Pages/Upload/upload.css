@@ -73,4 +73,7 @@ select:focus{
     color: white;
     border-radius: 8px;
 }
-
+.upload-btn:hover{
+    background-color: #4a4add;
+    transition: 0.3s ease-in-out;    
+}
