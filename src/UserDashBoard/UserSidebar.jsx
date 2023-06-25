@@ -16,7 +16,7 @@ export default function UserSidebar() {
 		<>
 			<div className='sidebar'>
 				<div className='top'>
-					<span className='top-title'>Welcome</span>
+					<span className='top-title'>DMS</span>
 				</div>
 				<div className='sidebarwrapper'>
 					<SidebarMenu title='DashBoard'>
