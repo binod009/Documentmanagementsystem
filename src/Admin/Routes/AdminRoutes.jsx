@@ -18,22 +18,22 @@ import {
     Navigate,
   } from "react-router-dom";
 export default function AdminRoutes() {
-const {currentUser} = useContext(AuthContext);
- const RequireAuth = ({children}) => {
-   return currentUser ? children : <Navigate to="/Admin/Login"/>;
- };
+// const {currentUser} = useContext(AuthContext);
+//  const RequireAuth = ({children}) => {
+//    return currentUser ? children : <Navigate to="/Admin/Login"/>;
+//  };
   return (
     <>
     <Router>
  <Routes>
-  <Route path="/Admin/">
+  {/* <Route path="/Admin/">
    <Route path="Login" element={<Login/>}/>
    <Route path="Signup" element={<Signup/>}/>
 <Route index element={
 <RequireAuth>
 <Home/>
 </RequireAuth>}
-/>
+/> */}
 
 <Route path="user">
   <Route index element={<RequireAuth><UserList/></RequireAuth>}/>
