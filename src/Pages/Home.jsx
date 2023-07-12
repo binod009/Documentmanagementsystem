@@ -1,83 +1,73 @@
-import React from 'react'
+import React from 'react';
 import Featuredinfo from '../featuredinfo/Featuredinfo';
 import TopBar from '../Admin/Topbar';
 import SideBar from '../Admin/SideBar';
 import '../App.css';
-import CategoryList from '../Category/CategoryList';
 import Chart from '../charts/Chart';
 import './home.css';
-import User from '../Pages/user/User';
-import Document from '../Pages/Document/Document';
-import UserRequest from '../Pages/user/UserRequest';
-import UserList from '../Pages/userlist/UserList';
-import { FileCopy,Person,CategoryOutlined } from '@material-ui/icons';
-import Upload from '../Pages/Upload/Upload';
-import { useEffect,useState } from 'react';
-import { collection, getDocs } from "firebase/firestore";
-import{db} from '../firebase';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,} from "react-router-dom";
-
+import { FileCopy, Person, CategoryOutlined } from '@material-ui/icons';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+import Document from './Document/Document';
 export default function Home() {
-const [count,setCount]= useState(0);
+	const [count, setCount] = useState(0);
+	const [user, setUser] = useState(0);
 
-useEffect(()=>{
-const retrive=async()=>{
-  const colRef = collection(db, "category");
-  const docsSnap = await getDocs(colRef);
-  const list=[];
-  docsSnap.forEach(doc => {
-   list.push(doc.data());
-  })
-  setCount(list.length);
-}
-retrive();
-},[])
+	useEffect(() => {
+		const retrive = async () => {
+			const colRef = collection(db, 'category');
+			const userRef = collection(db, 'users');
+			const docsSnap = await getDocs(colRef);
+			const userSnap = await getDocs(userRef);
+			const list = [];
+			const userlist = [];
+			docsSnap.forEach((doc) => {
+				list.push(doc.data());
+			});
+			setCount(list.length);
 
-  // doc.data() is never undefined for query doc snapshots
+			userSnap.forEach((doc) => {
+				userlist.push(doc.data());
+			});
+			setUser(userlist.length);
+		};
+		retrive();
+	}, []);
 
-   
-// doc.data() is never undefined for query doc snapshot
+	// doc.data() is never undefined for query doc snapshots
 
-const data =[
-    {
-    title:"Documents",
-    total:count,
-    icon:<FileCopy/>
-},
-    {
-    
-    title:"Category",
-    total:10,
-    icon:<CategoryOutlined/>
-},
-{
-  title:"Users",
-  total:20,
-  icon:<Person/>
-}       
-]
-  return (
-  <div className="Home">
-    <div className="sidebar-container">
-      <SideBar/>
-    </div>
-    <div className="homecontainer">
-      <TopBar/>
-      <div className="widgets">
-      <Featuredinfo data={data}/>
-      </div>
-      <div className="category-container">
-      <Chart/>
-      </div>
-    </div>
-  </div>
+	// doc.data() is never undefined for query doc snapshot
 
-     /* /* <Router>
+	const data = [
+		{
+			title: 'Documents',
+			total: count,
+			icon: <FileCopy />,
+		},
+		{
+			title: 'Users',
+			total: user,
+			icon: <Person />,
+		},
+	];
+	return (
+		<div className='Home'>
+			<div className='sidebar-container'>
+				<SideBar />
+			</div>
+			<div className='homecontainer'>
+				<TopBar />
+				<div className='widgets'>
+					<Featuredinfo data={data} />
+				</div>
+				<div className='category-container'>
+					<Chart />
+				</div>
+			</div>
+		</div>
+
+		/* /* <Router>
     <div className='grid-container'>
       <div className='grid-nav'>
         <TopBar/>
@@ -109,6 +99,5 @@ const data =[
     
     </div>
     </Router>  */
-
-  )
+	);
 }

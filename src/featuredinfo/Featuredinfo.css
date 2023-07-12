@@ -1,62 +1,62 @@
-.featured{
-    display: flex;
-    width: 100%;
-    flex:1;
-    justify-content: space-between;
-   height: 10rem;
+.featured {
+	display: flex;
+	width: 100%;
+	flex: 1;
+	justify-content: space-evenly;
+	height: 10rem;
 }
-.featuredItem{
-    width: 20%;
-    margin:10px 25px;
-    padding:2.5rem;
-    border-radius: 10px;
-    cursor:pointer;
-    -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
-    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+.featuredItem {
+	width: 20%;
+	margin: 10px 25px;
+	padding: 2.5rem;
+	border-radius: 10px;
+	cursor: pointer;
+	-webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+	box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
 }
-.featuredTitle{
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    align-items: center;
-    font-size: 20px;
-}
-
-.documentnumbercontainer{
-margin:10px 0px;
-display: flex;
-align-items: center;
+.featuredTitle {
+	display: flex;
+	align-items: center;
+	font-weight: 700;
+	align-items: center;
+	font-size: 20px;
 }
 
-.featuredNumber{
-font-size: 20px;
-font-weight: bold;
+.documentnumbercontainer {
+	margin: 10px 0px;
+	display: flex;
+	align-items: center;
 }
 
-.featuredIcon{
-margin-left: 15px;
-font-size: 28px;
-color:gray
+.featuredNumber {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.featuredIcon {
+	margin-left: 15px;
+	font-size: 28px;
+	color: gray;
 }
 
 @media only screen and (max-width: 920px) {
-    .featured{
-        display: flex;
-        width: 50%;
-        flex:1;
-       flex-wrap: wrap;
-        justify-content:flex-start;
-       height: 10%;
-    }
-    .featuredTitle{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 600;
-        font-size: 12px;
-    }
-    .featuredNumber{
-        font-size: 15px;
-        font-weight: bold;
-        }
-  }
+	.featured {
+		display: flex;
+		width: 50%;
+		flex: 1;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		height: 10%;
+	}
+	.featuredTitle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: 600;
+		font-size: 12px;
+	}
+	.featuredNumber {
+		font-size: 15px;
+		font-weight: bold;
+	}
+}
